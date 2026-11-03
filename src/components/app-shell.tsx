@@ -1,6 +1,6 @@
 import { type ReactNode, useState } from 'react'
 import { Link, useNavigate } from '@tanstack/react-router'
-import { Sparkles, LayoutDashboard, Map, Trophy, User, Award, Settings, LogOut, Menu, X, ShieldCheck, Bell } from 'lucide-react'
+import { Sparkles, LayoutDashboard, Map as MapIcon, Trophy, User, Award, Settings, LogOut, Menu, X, ShieldCheck, Bell } from 'lucide-react'
 import { useAuth } from '@/hooks/use-auth'
 import { useSiteSetting } from '@/hooks/use-site-settings'
 import { useCourse } from '@/hooks/use-course'
@@ -21,7 +21,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   const links = [
     { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { to: '/trilha', label: 'Mapa do curso', icon: Map },
+    { to: '/trilha', label: 'Mapa do curso', icon: MapIcon },
     { to: '/perfil', label: 'Conquistas', icon: Trophy, hash: 'conquistas' },
     ...(isAdmin ? [{ to: '/admin', label: 'Painel admin', icon: ShieldCheck }] : []),
   ] as const
