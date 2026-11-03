@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { useAuth } from '@/hooks/use-auth'
 import { useCourse, useLessons } from '@/hooks/use-course'
 import { useIsEnrolled } from '@/hooks/use-progress'
-import { supabase } from '@/lib/supabase'
+import { supabase, supabaseConfigured } from '@/lib/supabase'
 import { formatBRL } from '@/lib/utils'
 
 const BASE_INCLUDED_ITEMS = ['Exercícios com feedback de IA', 'Certificado de conclusão', 'Acesso imediato após a confirmação']
@@ -55,6 +55,11 @@ function CheckoutPage() {
         <div className="mx-auto max-w-lg">
           <h1 className="text-center font-display text-2xl font-bold tracking-tight">Finalizar compra</h1>
           <p className="mt-1.5 text-center text-sm text-muted-foreground">Você está a um passo de começar.</p>
+          {!supabaseConfigured && (
+            <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-3 text-center text-xs text-amber-900">
+              Modo demonstração: a compra é simulada e libera o acesso na hora, só neste navegador.
+            </p>
+          )}
 
           <Card className="mt-8 shadow-elevated">
             <CardContent className="pt-6">
